@@ -29,3 +29,16 @@ model Post {
   author    User?    @relation(fields: [authorId], references: [id])
   authorId  Int?
 }
+
+model Board {
+  id Int @id @default(autoincrement())
+  name String @unique
+  scores Score[]
+}
+model Score {
+  id Int @id @default(autoincrement())
+  value Int 
+  username String
+  boardId Int 
+  board Board @relation(fields: [boardId], references: [id])
+}
