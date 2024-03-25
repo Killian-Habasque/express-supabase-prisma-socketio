@@ -1,23 +1,23 @@
 {
-  "name": "supabase-postgresql",
+  "name": "2023-ecv-node-02",
   "version": "1.0.0",
-  "license": "MIT",
+  "description": "",
+  "main": "src/index.js",
+  "type": "module",
   "scripts": {
-    "dev": "ts-node script.ts",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.11.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
   },
   "devDependencies": {
-    "@types/node": "20.11.30",
-    "prisma": "5.11.0",
-    "supabase": "1.150.0",
-    "ts-node": "10.9.2",
-    "typescript": "5.4.2"
-  },
-  "dependencies": {
-    "@prisma/client": "5.11.0"
-  },
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "nodemon": "^3.1.0",
+    "prisma": "^5.11.0"
   }
 }
