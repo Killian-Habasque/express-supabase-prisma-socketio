@@ -3,6 +3,22 @@ import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
 import { boardRouter } from "./board.js";
 
+import { createClient } from '@supabase/supabase-js';
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+supabase
+  .channel('schema-db-changes')
+  .on(
+    'postgres_changes',
+    {
+      event: '*',
+      schema: 'public',
+    },
+    (payload) => console.log(payload)
+  )
+  .subscribe()
+
 export const prisma = new PrismaClient();
 
 export const app = express();
