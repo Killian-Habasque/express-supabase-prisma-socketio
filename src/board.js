@@ -38,6 +38,15 @@ boardRouter.post("/", async (req, res) => {
 
 boardRouter.delete("/:name", async (req, res) => {
      try {
+
+          await prisma.score.deleteMany({
+               where: {
+                    board: {
+                         name: req.params.name
+                    }
+               },
+          });
+
           const result = await prisma.board.delete({
                where: {
                     name: req.params.name,
@@ -45,6 +54,7 @@ boardRouter.delete("/:name", async (req, res) => {
           });
           res.json(result);
      } catch (error) {
+          console.log(error)
           res.status(400).json({ error: error });
      }
 });
