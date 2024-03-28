@@ -2,6 +2,7 @@
 import express from "express";
 import http from "http"; // Importez le module HTTP
 import { Server } from "socket.io"; // Importez le module Socket.io
+import cors from "cors";
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
 import { boardRouter } from "./board.js";
@@ -40,6 +41,7 @@ supabase
   .subscribe();
 
 app.use(express.json());
+app.use(cors());
 app.use("/", express.static("./public"));
 app.use("/boards", boardRouter);
 
