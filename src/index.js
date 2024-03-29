@@ -12,7 +12,7 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 const app = express();
 const PORT = process.env.PORT;
