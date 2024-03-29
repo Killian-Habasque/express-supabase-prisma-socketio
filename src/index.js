@@ -14,7 +14,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const prisma = new PrismaClient();
 
-const app = express();
+export const app = express();
 const PORT = process.env.PORT;
 
 const server = http.createServer(app);
@@ -63,8 +63,8 @@ app.delete("/score/:id", async (req, res) => {
   }
 });
 
-export default function startServer() {
-  server.listen(PORT, () => {
-    console.log("Example app listening on port " + PORT);
-  });
-}
+server.listen(PORT, () => {
+  console.log("Example app listening on port " + PORT);
+});
+
+export default server;
