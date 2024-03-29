@@ -1,11 +1,9 @@
 {
   "version": 2,
-  "name": "deploy-supabase-prisma-express",
-  "builds": [
-    { "src": "src/index.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "src/index.js" },
-    { "src": "/(.*)", "dest": "public/$1" }
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
   ]
 }
