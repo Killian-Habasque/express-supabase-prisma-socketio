@@ -5,7 +5,7 @@ import { Server } from "socket.io"; // Importez le module Socket.io
 import cors from "cors";
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
-import { boardRouter } from "./src/board.js";
+import { boardRouter } from "./src/board";
 
 import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -35,7 +35,7 @@ supabase
     },
     (payload) => {
       console.log(payload);
-      // io.emit("databaseChange", payload); 
+      io.emit("databaseChange", payload); // Émettez l'événement vers le front-end via WebSocket
     }
   )
   .subscribe();
@@ -46,7 +46,7 @@ app.use(
     origin: "*",
   })
 );
-// app.use("/", express.static("./public"));
+app.use("/", express.static("./public"));
 app.use("/boards", boardRouter);
 
 app.delete("/score/:id", async (req, res) => {
