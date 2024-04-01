@@ -1,5 +1,5 @@
 import express from "express";
-import { prisma } from "./index.js";
+import { prisma } from "../server.js";
 export const boardRouter = express.Router();
 
 boardRouter.get("/", async (req, res) => {
