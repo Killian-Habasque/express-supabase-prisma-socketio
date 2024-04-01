@@ -17,13 +17,13 @@ export const prisma = new PrismaClient();
 export const app = express();
 const PORT = process.env.PORT;
 
-// const server = http.createServer(app);
+const server = http.createServer(app);
 
-// const io = new Server(server, { cors: { origin: "*" } });
+const io = new Server(server, { cors: { origin: "*" } });
 
-// io.on("connection", (socket) => {
-//   console.log("Client connected");
-// });
+io.on("connection", (socket) => {
+  console.log("Client connected");
+});
 
 supabase
   .channel('schema-db-changes')
@@ -63,8 +63,8 @@ app.delete("/score/:id", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
-export default app;
+export default server;
