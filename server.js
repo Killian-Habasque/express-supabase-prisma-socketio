@@ -5,7 +5,7 @@ import { Server } from "socket.io"; // Importez le module Socket.io
 import cors from "cors";
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
-import { boardRouter } from "./src/board";
+import { boardRouter } from "./src/board.js";
 
 import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.SUPABASE_URL;
