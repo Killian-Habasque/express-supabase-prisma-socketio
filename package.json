@@ -12,7 +12,8 @@
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
     "migrate:status": "prisma migrate status",
-    "generate": "prisma generate"
+    "generate": "prisma generate",
+    "build": "prisma generate"
   },
   "author": "",
   "license": "ISC",
