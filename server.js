@@ -6,11 +6,12 @@ import cors from "cors";
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
 import { boardRouter } from "./src/board.js";
+import userRouter from "./src/user.js";
 
 import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const prisma = new PrismaClient();
 
@@ -48,6 +49,7 @@ app.use(
 );
 app.use("/", express.static("./public"));
 app.use("/boards", boardRouter);
+app.use("/auth", userRouter);
 
 app.delete("/score/:id", async (req, res) => {
   try {

@@ -72,3 +72,25 @@ buttonCreate.addEventListener("click", () => {
 document.body.appendChild(buttonCreate);
 
 console.log(await client.boards.getByName("test2"));
+
+
+
+
+
+  const registerForm = document.getElementById("register-form");
+
+  registerForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    try {
+      console.log("test")
+      const { message } = await client.auth.register(emailInput.value, passwordInput.value);
+      console.log(message); // Affichez un message de succès après l'inscription
+    } catch (error) {
+      console.error("Registration error:", error);
+      // Affichez un message d'erreur si l'inscription échoue
+    }
+  });
